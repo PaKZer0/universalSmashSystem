@@ -3,7 +3,7 @@ import sys
 
 # Dependencies are automatically detected, but it might need
 # fine tuning.
-build_options = dict(packages = ['numpy', 'pygame', 'requests', 'xml', 'Tkinter'], 
+build_options = dict(packages = ['numpy', 'pygame', 'requests', 'xml', 'Tkinter', 'PIL'], 
                     excludes = [], 
                     include_files = ['Orbitron Medium.ttf', 'full Pack 2025.ttf', 'settingsManager.py',
                                      'battle.py', 'main.py', 'musicManager.py', 'spriteManager.py',
@@ -11,12 +11,10 @@ build_options = dict(packages = ['numpy', 'pygame', 'requests', 'xml', 'Tkinter'
                                      'builder/', 'sprites/', 'stages/', 'cacert.pem'])
 
 base_b = None
-if sys.platform == "win32":
-    base_b = "Win32GUI"
 
 executables = [
     Executable('main.py', base = base_b, targetName = 'TUSSLE.exe', icon='sprites/tussle.ico'),
-    Executable('updater.py', 'console', targetName = 'updater.exe', icon='sprites/downloader.ico'),
+    #Executable('updater.py', 'console', targetName = 'updater.exe', icon='sprites/downloader.ico'),
     Executable('builderMain.py', base = base_b, targetName='LegacyEditor.exe', icon='sprites/editor.ico')
 ]
 
