@@ -22,7 +22,11 @@ class Menu():
         self.settings = settingsManager.getSetting().setting
         pygame.init()
         pygame.joystick.init()
-        screen = pygame.display.set_mode((self.settings['windowSize'][0], self.settings['windowSize'][1]))
+        flags = pygame.SCALED | pygame.FULLSCREEN
+        screen = pygame.display.set_mode(
+            (self.settings['windowSize'][0], self.settings['windowSize'][1]),
+            flags
+        )
         pygame.display.set_caption(self.settings['windowName'])
             
         self.current_screen = StartScreen(self)
@@ -52,7 +56,7 @@ class SubMenu():
             m.changeColor([255,255,255])
         
         rgb = self._parent.bg.hsvtorgb(self._parent.bg.star_color)
-        self.menu_text[self.selected_option].changeColor(rgb)    
+        self.menu_text[self.selected_option].changeColor(rgb)
     
     def executeMenu(self,_screen):
         self.clock = pygame.time.Clock()
@@ -800,12 +804,16 @@ class GraphicsMenu(SubMenu):
         self.selected = 0
         
         self.category_text = spriteManager.TextSprite('Window','full Pack 2025',24,[255,255,255])
-        
+
+        self.menu_text = [
+            spriteManager.TextSprite('Fullscreen: '+'Off','Orbitron Medium',16,[255,255,255]),
+        ]
         
         self.selected_option = 0
         
     def executeMenu(self,_screen):
         return 1
+        #return SubMenu.executeMenu(self, _screen)
         
 
 class SoundMenu(SubMenu):
