@@ -22,7 +22,13 @@ class Menu():
         self.settings = settingsManager.getSetting().setting
         pygame.init()
         pygame.joystick.init()
-        flags = pygame.SCALED | pygame.FULLSCREEN
+        
+        # fullscreen init
+        flags = 0
+
+        if 'fullScreen' in self.settings and self.settings['fullScreen']:
+            flags = pygame.SCALED | pygame.FULLSCREEN
+        
         screen = pygame.display.set_mode(
             (self.settings['windowSize'][0], self.settings['windowSize'][1]),
             flags

@@ -153,6 +153,8 @@ class Settings():
         self.setting['windowWidth']   = getNumber(self.parser, 'window', 'windowWidth')
         self.setting['windowHeight']  = getNumber(self.parser, 'window', 'windowHeight')
         self.setting['frameCap']      = getNumber(self.parser, 'window', 'frameCap')
+        self.setting['fullScreen']      = getBoolean(self.parser, 'window', 'fullScreen')
+
         self.setting['windowSize']    = [self.setting['windowWidth'], self.setting['windowHeight']]
 
         self.setting['music_volume']       = getNumber(self.parser, 'sound', 'music_volume') / 100.0
@@ -357,6 +359,7 @@ def saveSettings(_settings):
     parser.set('window','windowWidth',str(_settings['windowSize'][0]))
     parser.set('window','windowHeight',str(_settings['windowSize'][1]))
     parser.set('window','frameCap',str(_settings['frameCap']))
+    parser.set('window','fullScreen',str(_settings['fullScreen']))
     
     parser.add_section('sound')
     parser.set('sound','music_volume',str(_settings['music_volume'] * 100))
