@@ -507,7 +507,7 @@ class Article():
          
 class AnimatedArticle():
     def __init__(self, _sprite, _owner, _origin, _imageWidth, _length=1, _draw_depth=1):
-        self.sprite = spriteManager.SheetSprite(pygame.image.load(_sprite), _imageWidth)
+        self.sprite = spriteManager.SheetSprite(pygame.image.load(_sprite).convert_alpha(), _imageWidth)
         self.posx, self.posy = _origin
         self.sprite.rect.center = _origin
         self.owner = _owner

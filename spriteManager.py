@@ -186,7 +186,7 @@ class ImageSprite(Sprite):
     def __init__(self,_path):
         Sprite.__init__(self)
         self.path = _path
-        self.image = pygame.image.load(_path)
+        self.image = pygame.image.load(_path).convert_alpha()
         self.rect = self.image.get_rect()
         self.bounding_rect = self.getBoundingBox()
     
@@ -216,7 +216,7 @@ class SheetSprite(ImageSprite):
         
         self.sheet = _sheet
         if isinstance(_sheet,str) or isinstance(_sheet, unicode):
-            self.sheet = pygame.image.load(_sheet)
+            self.sheet = pygame.image.load(_sheet).convert_alpha()
         
         self.color_map = _colorMap
         self.index = 0
@@ -361,7 +361,7 @@ class ImageLibrary():
             fname, ext = os.path.splitext(f)
             if fname.startswith(_prefix) and supported_file_types.count(ext):
                 sprite_name = fname[len(_prefix):]
-                sprite = pygame.image.load(os.path.join(self.directory,f))
+                sprite = pygame.image.load(os.path.join(self.directory,f)).convert_alpha()
                 sprite = sprite.convert_alpha()
                 self.image_dict[sprite_name] = sprite
                 #print(sprite.get_alpha(), sprite_name, self.image_dict[sprite_name])

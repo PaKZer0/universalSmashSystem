@@ -7,7 +7,6 @@ import battle
 import sys
 import stages.true_arena as stage
 import engine.cpuPlayer as cpuPlayer
-import engine.abstractFighter as abstractFighter
 import menu.sss
 import musicManager
 from menu import sss
@@ -110,6 +109,8 @@ class CSSWidget():
        
 class FighterWheel():
     def __init__(self,_playerNum):
+        import engine.abstractFighter as abstractFighter
+        
         self.fighters = []
         
         # Load all files.
